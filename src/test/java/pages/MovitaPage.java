@@ -161,4 +161,68 @@ public class MovitaPage {
     @org.openqa.selenium.support.FindBy(xpath = "//*[@id=\"navbar-mobile\"]/ul/li/a")
     public org.openqa.selenium.WebElement ana_sayfaya_dön;
 
+
+
+
+    @FindBy (xpath = "//*[@type='submit']")
+    public WebElement kullaniciGiris;
+
+    @FindBy (id = "main-menu-navigation")
+    public WebElement menuler;
+
+    @FindBy (xpath = "//*[@id='map']")
+    public WebElement harita;
+
+    @FindBy (xpath = "//*[@class='col-lg-2 col-md-2 text-xs-center']")
+    public WebElement aracBilgileri;
+
+    @FindBy (xpath = "//*[@id='anasayfa']")
+    public WebElement anasayfaBileseni;
+
+    @FindBy (xpath = "(//*[@class='nav-item has-sub'])[1]")
+    public WebElement raporlarBileseni;
+
+    @FindBy (xpath = "//*[@id='harita_rota']")
+    public WebElement aracRotaBileseni;
+
+    @FindBy (xpath = "//*[@id='arac_video']")
+    public WebElement videoFotoBileseni;
+
+    @FindBy (xpath = "(//*[@class='nav-item has-sub'])[2]")
+    public WebElement guzergahBileseni;
+
+    @FindBy (xpath = "//*[@id='alarm_listesi']")
+    public WebElement alarmBileseni;
+
+    @FindBy (xpath = "(//*[@class='nav-item has-sub'])[3]")
+    public WebElement rotaBileseni;
+
+    @FindBy (xpath = "(//*[@class='nav-item has-sub'])[4]")
+    public WebElement personelBileseni;
+
+    @FindBy (xpath = "(//*[@class='nav-item has-sub'])[6]")
+    public WebElement yonetimBileseni;
+
+    @FindBy (xpath = "//*[text()='Müşteri İşlemleri']")
+    public WebElement musteriIslemleri;
+
+    @FindBy (xpath = "//*[text()='Personel İşlemleri']")
+    public WebElement personelIslemleri;
+
+    @FindBy (id = "main-menu-navigation")
+    public WebElement tumBilesenler;
+
+    @FindBy (xpath = "(//*[@class='menu-title'])[3]")
+    public WebElement aracRotatextRengi;
+
+    @FindBy (id = "ic-logo")
+    public WebElement kullaniciSayfaLogo;
+
+    @FindBy (xpath = "//*[@data-open='click']")
+    public WebElement layout;
+
+    @FindBy (xpath = "//*[@class='clearfix blue-grey lighten-2 text-sm-center mb-0 px-2']")
+    public WebElement kullaniciSayfaFooter;
+
+
 }
