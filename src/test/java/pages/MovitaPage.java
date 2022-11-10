@@ -142,5 +142,87 @@ public class MovitaPage {
     @FindBy (xpath = "//*[@class='clearfix blue-grey lighten-2 text-sm-center mb-0 px-1']")
     public WebElement footer;
 
+    @org.openqa.selenium.support.FindBy(xpath = "/html/body/div[2]/div/div[2]/div/form/fieldset[3]/div/a")
+    public org.openqa.selenium.WebElement sifrenizi_unuttunuzmu;
+    @org.openqa.selenium.support.FindBy(xpath = "/html/body/div[2]/div/div[1]/div/img")
+    public org.openqa.selenium.WebElement movita_logo;
+    @org.openqa.selenium.support.FindBy(xpath = "/html/body/div[2]/div/div[1]/h6/span")
+    public org.openqa.selenium.WebElement SifreYenileme;
+    @org.openqa.selenium.support.FindBy(xpath = "//*[@id=\"username\"]")
+    public org.openqa.selenium.WebElement kullanıcıAdı;
+    @org.openqa.selenium.support.FindBy(xpath = "//*[@id=\"telefon\"]")
+    public org.openqa.selenium.WebElement telefon;
+    @org.openqa.selenium.support.FindBy(xpath = "/html/body/div[2]/div/div[2]/div/form/fieldset[3]/div/a")
+    public org.openqa.selenium.WebElement giris_ekranı;
+    @org.openqa.selenium.support.FindBy(xpath = "/html/body/div[2]/div/div[2]/div/form/button")
+    public org.openqa.selenium.WebElement sifre_degistir;
+    @org.openqa.selenium.support.FindBy(xpath = "/html/body/footer[2]")
+    public org.openqa.selenium.WebElement foother;
+    @org.openqa.selenium.support.FindBy(xpath = "//*[@id=\"navbar-mobile\"]/ul/li/a")
+    public org.openqa.selenium.WebElement ana_sayfaya_dön;
+
+
+
+
+    @FindBy (xpath = "//*[@type='submit']")
+    public WebElement kullaniciGiris;
+
+    @FindBy (id = "main-menu-navigation")
+    public WebElement menuler;
+
+    @FindBy (xpath = "//*[@id='map']")
+    public WebElement harita;
+
+    @FindBy (xpath = "//*[@class='col-lg-2 col-md-2 text-xs-center']")
+    public WebElement aracBilgileri;
+
+    @FindBy (xpath = "//*[@id='anasayfa']")
+    public WebElement anasayfaBileseni;
+
+    @FindBy (xpath = "(//*[@class='nav-item has-sub'])[1]")
+    public WebElement raporlarBileseni;
+
+    @FindBy (xpath = "//*[@id='harita_rota']")
+    public WebElement aracRotaBileseni;
+
+    @FindBy (xpath = "//*[@id='arac_video']")
+    public WebElement videoFotoBileseni;
+
+    @FindBy (xpath = "(//*[@class='nav-item has-sub'])[2]")
+    public WebElement guzergahBileseni;
+
+    @FindBy (xpath = "//*[@id='alarm_listesi']")
+    public WebElement alarmBileseni;
+
+    @FindBy (xpath = "(//*[@class='nav-item has-sub'])[3]")
+    public WebElement rotaBileseni;
+
+    @FindBy (xpath = "(//*[@class='nav-item has-sub'])[4]")
+    public WebElement personelBileseni;
+
+    @FindBy (xpath = "(//*[@class='nav-item has-sub'])[6]")
+    public WebElement yonetimBileseni;
+
+    @FindBy (xpath = "//*[text()='Müşteri İşlemleri']")
+    public WebElement musteriIslemleri;
+
+    @FindBy (xpath = "//*[text()='Personel İşlemleri']")
+    public WebElement personelIslemleri;
+
+    @FindBy (id = "main-menu-navigation")
+    public WebElement tumBilesenler;
+
+    @FindBy (xpath = "(//*[@class='menu-title'])[3]")
+    public WebElement aracRotatextRengi;
+
+    @FindBy (id = "ic-logo")
+    public WebElement kullaniciSayfaLogo;
+
+    @FindBy (xpath = "//*[@data-open='click']")
+    public WebElement layout;
+
+    @FindBy (xpath = "//*[@class='clearfix blue-grey lighten-2 text-sm-center mb-0 px-2']")
+    public WebElement kullaniciSayfaFooter;
+
 
 }

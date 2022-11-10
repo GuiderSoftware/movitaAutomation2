@@ -37,7 +37,7 @@ public class MovitaHomepageStepDefinitions {
 
     @Then("User should navigate to homepage")
     public void user_should_navigate_to_homepage() {
-        String expectedUrl = "https://movita.com.tr/";
+        String expectedUrl = "https://movita.com.tr:9045/";
         String actualUrl = Driver.getDriver().getCurrentUrl();
         Assert.assertEquals("Urls are not matched.User can't navigate to homepage", expectedUrl, actualUrl);
     }
@@ -593,4 +593,240 @@ public class MovitaHomepageStepDefinitions {
     }
 
 
+//////// Login sayfasındaki ‘Şifrenizi mi Unuttunuz?’ sayfasının görünümü ve işlevselliği//////
+    //////ENGİN AKGÜL////
+@Then("giris yap tıkla")
+public void giris_yap_tıkla() {
+    ReusableMethods.clickWithTimeOut(movita.giris,10000);
+}
+
+    @Then("sifrenizi mi unuttunuz mu tıkla")
+    public void sifreniziMiUnuttunuzMuTıkla() {
+
+        ReusableMethods.clickWithTimeOut(movita.sifrenizi_unuttunuzmu,30000);
+
+    }
+
+    @Then("logo dogrulama")
+    public void logo_dogrulama() {
+        Assert.assertTrue(movita.movita_logo.isDisplayed());
+
+    }
+
+    @Then("sifre yenileme text dogrulama")
+    public void sifre_yenileme_text_dogrulama() {
+        String aranan = "Movita Şifre Yenileme";
+        String sonuc = movita.SifreYenileme.getText();
+        Assert.assertTrue(aranan.contains(sonuc));
+        System.out.println("Yenileme başlığı = " + aranan);
+    }
+
+    @Then("kullanıcı adı giris alanı")
+    public void kullanıcı_adı_giris_alanı() {
+        String aranan = "Kullanıcı Adı Girişi Alanı";
+        String sonuc = movita.kullanıcıAdı.getText();
+        Assert.assertTrue(aranan.contains(sonuc));
+        System.out.println("Kullanıcı Alanı = " + aranan);
+
+    }
+
+    @Then("telefon giris alanı")
+    public void telefon_giris_alanı() throws InterruptedException {
+        String aranan = "Telefon Girişi Alanı";
+        String sonuc = movita.telefon.getText();
+        Assert.assertTrue(aranan.contains(sonuc));
+        System.out.println("Telefon Alanı = " + aranan);
+        Thread.sleep(3000);
+
+    }
+
+    @Then("sifre degistir buttonu")
+    public void sifre_degistir_buttonu() throws InterruptedException {
+        String aranan = "Şifre Değiştir butonu";
+        String sonuc = movita.sifre_degistir.getText();
+        Assert.assertTrue(aranan.contains(sonuc));
+        System.out.println("şifre değiştir buttonu = " + aranan);
+        Thread.sleep(3000);
+    }
+
+    @Then("foother dogrulama")
+    public void foother_dogrulama() throws InterruptedException {
+        String aranan = "Copyright © 2017 Movita , Bütün Hakları Saklıdır.";
+        String sonuc = movita.foother.getText();
+        Assert.assertTrue(aranan.contains(sonuc));
+        System.out.println("foother sonucu = " + aranan);
+        Thread.sleep(5000);
+
+
+    }
+
+    @And("giris ekranı  hover over ve tıkla")
+    public void girisEkranıHoverOverVeTıkla() {
+        String color_before= movita.giris_ekranı.getCssValue("color");
+        String color_b_hex=Color.fromString(color_before).asHex();
+        ReusableMethods.hover(movita.giris_ekranı);
+        String color_after=movita.giris_ekranı.getCssValue("color");
+        String color_a_hex=Color.fromString(color_after).asHex();
+        Assert.assertFalse(Objects.equals(color_a_hex, color_b_hex));
+        ReusableMethods.clickWithTimeOut(movita.giris_ekranı,10000);
+
+    }
+
+    @Then("ana sayfaya dön")
+    public void ana_sayfaya_dön() {
+        ReusableMethods.clickWithTimeOut(movita.ana_sayfaya_dön,30000);
+
+    }
+
+    @Given("Kullanıcı {string} Anasayfasına gider")
+    public void kullanıcıAnasayfasınaGider(String movita) {
+        Driver.getDriver().get(ConfigurationReader.getProperty("movita"));
+    }
+
+    @When("Anasayfada {string} butonuna tıklar")
+    public void anasayfadaButonunaTıklar(String girisYap) {
+        movita.girisYap.click();
+
+    }
+
+    @Then("Kullanıcı,hesabına geçerli kullanici adı ve şifre ile giriş yapar")
+    public void kullanıcıHesabınaGeçerliKullaniciAdıVeŞifreIleGirişYapar() {
+        movita.username.sendKeys(ConfigurationReader.getProperty("ValidUserName"));
+        movita.password.sendKeys(ConfigurationReader.getProperty("ValidPassword"));
+        ReusableMethods.clickWithTimeOut(movita.kullaniciGiris,10000);
+    }
+
+    @And("Kullanıcı, hesabında solda menüler,ortada harita ve sağda arac bilgileri oldugunu gorur")
+    public void kullanıcıHesabındaSoldaMenülerOrtadaHaritaVeSağdaAracBilgileriOldugunuGorur() {
+        Assert.assertTrue( movita.menuler.isDisplayed());
+        Assert.assertTrue( movita.harita.isDisplayed());
+        Assert.assertTrue( movita.aracBilgileri.isDisplayed());
+
+    }
+
+    @And("Kullanıcı hesabının solundaki bilesenleri belirlenen sirayla gorur")
+    public void kullanıcıHesabınınSolundakiBilesenleriBelirlenenSiraylaGorur() {
+        Assert.assertTrue(movita.anasayfaBileseni.isDisplayed());
+        Assert.assertTrue(movita.raporlarBileseni.isDisplayed());
+        Assert.assertTrue(movita.aracRotaBileseni.isDisplayed());
+        Assert.assertTrue(movita.videoFotoBileseni.isDisplayed());
+        Assert.assertTrue(movita.guzergahBileseni.isDisplayed());
+        Assert.assertTrue(movita.alarmBileseni.isDisplayed());
+        Assert.assertTrue(movita.rotaBileseni.isDisplayed());
+        Assert.assertTrue(movita.personelBileseni.isDisplayed());
+        Assert.assertTrue(movita.yonetimBileseni.isDisplayed());
+    }
+
+    @And("Kullanıcı hesabındaki bileşenlerin bazılarında alt menuler acılır")
+    public void kullanıcıHesabındakiBileşenlerinBazılarındaAltMenulerAcılır() {
+        movita.personelIslemleri.click();
+        ReusableMethods.waitFor(3);
+        ReusableMethods.hover(movita.musteriIslemleri);
+        movita.musteriIslemleri.click();
+    }
+
+    @And("Kullanici hesabında herhangi bir bilesenin secili olmadıgını gorur")
+    public void kullaniciHesabındaHerhangiBirBileseninSeciliOlmadıgınıGorur() {
+        Assert.assertFalse(movita.tumBilesenler.isSelected());
+        Assert.assertFalse(movita.alarmBileseni.isSelected());
+        Assert.assertFalse(movita.raporlarBileseni.isSelected());
+    }
+
+    @And("Kullanici hesabında ana bilesenler uzerinde hover over yapar")
+    public void kullaniciHesabındaAnaBilesenlerUzerindeHoverOverYapar() {
+        ReusableMethods.hover(movita.anasayfaBileseni);
+        ReusableMethods.waitFor(1);
+        ReusableMethods.hover(movita.raporlarBileseni);
+        ReusableMethods.waitFor(1);
+        ReusableMethods.hover(movita.aracRotaBileseni);
+        ReusableMethods.waitFor(1);
+        ReusableMethods.hover(movita.videoFotoBileseni);
+        ReusableMethods.hover(movita.guzergahBileseni);
+        ReusableMethods.hover(movita.alarmBileseni);
+        ReusableMethods.hover(movita.rotaBileseni);
+        ReusableMethods.hover(movita.personelBileseni);
+    }
+
+    @And("Hover over sonrasi secili zemin renginin  beyazdan griye degistigini gorur")
+    public void hoverOverSonrasiSeciliZeminRengininBeyazdanGriyeDegistiginiGorur() {
+        String color_before= movita.rotaBileseni.getCssValue("color");
+        String color_b_hex=Color.fromString(color_before).asHex();
+        ReusableMethods.hover(movita.rotaBileseni);
+        String color_after=movita.rotaBileseni.getCssValue("color");
+        String color_a_hex=Color.fromString(color_after).asHex();
+        Assert.assertTrue(Objects.equals(color_a_hex, color_b_hex));
+        ReusableMethods.clickWithTimeOut(movita.rotaBileseni,10000);
+    }
+
+    @And("Acilir menu olan bilesenlere tiklar")
+    public void acilirMenuOlanBilesenlereTiklar() {
+        movita.raporlarBileseni.click();
+        ReusableMethods.waitFor(3);
+        ReusableMethods.hover(movita.guzergahBileseni);
+        movita.guzergahBileseni.click();
+        ReusableMethods.hover(movita.rotaBileseni);
+        movita.rotaBileseni.click();
+    }
+
+    @And("Acilir menu olan bilesenlerde  zemin ve text renginin degismedigini gorur")
+    public void acilirMenuOlanBilesenlerdeZeminVeTextRengininDegismediginiGorur() {
+        String color_before= movita.raporlarBileseni.getCssValue("color");
+        String color_b_hex=Color.fromString(color_before).asHex();
+        ReusableMethods.hover(movita.raporlarBileseni);
+        String color_after=movita.raporlarBileseni.getCssValue("color");
+        String color_a_hex=Color.fromString(color_after).asHex();
+        Assert.assertTrue(Objects.equals(color_a_hex, color_b_hex));
+        ReusableMethods.clickWithTimeOut(movita.raporlarBileseni,10000);
+        ReusableMethods.waitFor(3);
+    }
+
+    @And("Acilir menu olmayan bilesenlere tiklar")
+    public void acilirMenuOlmayanBilesenlereTiklar() {
+        movita.aracRotaBileseni.click();
+        movita.alarmBileseni.click();
+        movita.videoFotoBileseni.click();
+        ReusableMethods.waitFor(3);
+    }
+
+    @And("Acilir menu olmayan bilesenlerde zemin renginin gri  ve text renginin mavi oldugunu gorur")
+    public void acilirMenuOlmayanBilesenlerdeZeminRengininGriVeTextRengininMaviOldugunuGorur() {
+        //zemin rengi gri degişmedi
+        String color_before= movita.aracRotaBileseni.getCssValue("color");
+        String color_b_hex=Color.fromString(color_before).asHex();
+        ReusableMethods.hover(movita.aracRotaBileseni);
+        String color_after=movita.aracRotaBileseni.getCssValue("color");
+        String color_a_hex=Color.fromString(color_after).asHex();
+        Assert.assertTrue(Objects.equals(color_a_hex, color_b_hex));
+        ReusableMethods.clickWithTimeOut(movita.aracRotaBileseni,10000);
+
+        //text rengi değişti mavi oldu
+        String color_before1= movita.aracRotatextRengi.getCssValue("color");
+        String color_b_hex1=Color.fromString(color_before1).asHex();
+        ReusableMethods.hover(movita.aracRotatextRengi);
+        String color_after1=movita.aracRotatextRengi.getCssValue("color");
+        String color_a_hex1=Color.fromString(color_after1).asHex();
+        Assert.assertFalse(Objects.equals(color_a_hex1, color_b_hex1));
+        ReusableMethods.clickWithTimeOut(movita.aracRotatextRengi,10000);
+    }
+
+    @And("‘Anasayfa \\(filo_admin)’ componentinin uzerinde Movita logosu bulundugunu gorur")
+    public void anasayfaFilo_adminComponentininUzerindeMovitaLogosuBulundugunuGorur() {
+        Assert.assertTrue(movita.kullaniciSayfaLogo.isDisplayed());
+    }
+
+    @And("Kullanici logoya tiklar")
+    public void kullaniciLogoyaTiklar() {
+        movita.kullaniciSayfaLogo.click();
+    }
+
+    @And("Kullanici hesabina girdikten sonraki layouta ulasır")
+    public void kullaniciHesabinaGirdiktenSonrakiLayoutaUlasır() {
+        Assert.assertTrue(movita.layout.isDisplayed());
+    }
+
+    @And("Kullanici sayfasinda footer kismi yazisi")
+    public void kullaniciSayfasindaFooterKismiYazisi() {
+        Assert.assertTrue(movita.kullaniciSayfaFooter.isDisplayed());
+
+    }
 }
