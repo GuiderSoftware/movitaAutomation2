@@ -11,7 +11,7 @@ import org.junit.runner.RunWith;
                 "json:target/json-reports/Pcucumber2.json",
                 "junit:target/xml-report/Pcucumber2.xml"},  
         dryRun = false,
-        tags="@parametre"
+        tags="@SmokeTestHomePage"
 
 
 )
